@@ -1,6 +1,6 @@
 import styles from "./index.module.css"
 import Category from "../Category";
-import Data from "../Data"
+import Date from "../Date"
 import Image from "next/image";
 import Link from "next/link";
 import { News } from "@/app/_libs/microcms";
@@ -19,7 +19,7 @@ export default function NewsList({ news }: Props) {
             <li key={article.id} className={styles.list}>
               <Link href={`/news/${article.id}`} className={styles.link}>
                 
-                {article.thumbnail? (
+                {article.thumbnail ? (
                   <Image
                     src={article.thumbnail.url}
                     alt=""
@@ -33,14 +33,14 @@ export default function NewsList({ news }: Props) {
                     src="/no-image.png"
                     alt="No Image"
                     width={1200}
-                    height={600}
+                    height={630}
                   />
                 )}
                 <dl className={styles.content}>
                   <dt className={styles.newsItemTitle}>{article.title}</dt> 
                   <dd className={styles.meta}>
                       <Category category={article.category} />
-                      <Data data={article.publishedAt} />
+                      <Date date={article.publishedAt ?? article.createdAt} />
                     </dd>               
                 </dl>
               </Link>
